@@ -1,3 +1,5 @@
 /.gradle
 /bin
 /.vscode
+/.project
+org.eclipse.buildship.core.prefs

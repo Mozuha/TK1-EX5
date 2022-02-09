@@ -1,5 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.io.Console;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -84,6 +87,50 @@ public class MainWindow extends JFrame {
 	private void snapshot(int snapshot) {
 		// TODO
 		historyListModel.addElement("Snapshot ...");
+
+		Process hangar1 = new Process(1);
+		Process hangar2 = new Process(2);
+		Process hangar3 = new Process(3);
+
+		ChandyLamport c1 = new ChandyLamport(1, hangar1, true, historyListModel);
+		ChandyLamport c2 = new ChandyLamport(2, hangar2, false, historyListModel);
+		ChandyLamport c3 = new ChandyLamport(3, hangar3, false, historyListModel);
+		
+		Thread t1 = new Thread(c1);
+		Thread t2 = new Thread(c1);
+		Thread t3 = new Thread(c1);
+
+		Thread t4 = new Thread(c2);
+		Thread t5 = new Thread(c2);
+		Thread t6 = new Thread(c2);
+
+		Thread t7 = new Thread(c3);
+		Thread t8 = new Thread(c3);
+		Thread t9 = new Thread(c3);
+
+		t1.setName("local");
+		t2.setName("receiveChannel");
+		t3.setName("sendChannel");
+
+		t4.setName("local");
+		t5.setName("receiveChannel");
+		t6.setName("sendChannel");
+
+		t7.setName("local");
+		t8.setName("receiveChannel");
+		t9.setName("sendChannel");
+
+		t1.start();
+		t2.start();
+		t3.start();
+
+		t4.start();
+		t5.start();
+		t6.start();
+
+		t7.start();
+		t8.start();
+		t9.start();
 	}
 
 }
